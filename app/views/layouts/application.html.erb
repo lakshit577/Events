@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ig</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+  <nav>
+    <ul>
+    <% unless on_auth_page? %>
+      <% if user_signed_in? %>
+        
+        <li><%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete } %></li>
+      <% else %>
+        <li><%= link_to "Log In", new_user_session_path %></li><br>
+        <%= "NEW USER :-" %>
+        <li><%= link_to "Sign Up", new_user_registration_path %></li>
+      <% end %>
+      <%end%>
+    </ul>
+  </nav>
+  <p class="notice"><%= notice %></p> 
+  <p class="alert"><%= alert %></p> 
+    <%= yield %>
+  </body>
+</html>

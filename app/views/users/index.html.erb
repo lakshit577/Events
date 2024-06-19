@@ -1,0 +1,14 @@
+
+<%@users.each do |u|%>
+    <%if current_user == u%>
+        <%next%>
+    <%else%>
+        <%=u.name%>
+    <%end%>
+<%end%>
+
+<%= link_to "my profile" , user_path(current_user) %>
+
+
+
+
