@@ -6,15 +6,7 @@ class UsersController < ApplicationController
         
         @users  = User.all
     end
-    def show
-        @user =  User.find(params[:id])
-     
-        @followers_count = @user.followers.count
-        @followings_count = @user.followings.count
-        
-
-
-    end
+    
 
     private
     def authorize_user
