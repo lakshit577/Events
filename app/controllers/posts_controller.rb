@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
     def index
+        @posts = Post.all   
+        # debugger
+        @user = current_user.id
     end
 
 
@@ -20,7 +23,14 @@ class PostsController < ApplicationController
 
     def destroy
         @post = current_user.posts.new(permit_params)
-        
+
+    end
+
+    def like
+        debugger
+        @post = Post.find(params[:id])
+        @post = @user.posts.find(params[:post_id])
+        @like = @post.likes.find_by(user: current_user)
     end
 
     private
@@ -28,3 +38,6 @@ class PostsController < ApplicationController
         params.require(:post).permit(:name, :description)
     end
 end
+
+
+

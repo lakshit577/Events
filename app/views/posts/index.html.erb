@@ -1,0 +1,10 @@
+<h2>All Posts</h2>
+<% @posts.each do |p| %>
+    <h3>name</h3>
+    <%= p.name %>
+    <br>
+    <h3>description</h3>
+    <%= p.description %>
+    <br>
+    <%= button_to "Like", like_user_post_path(@user, p), method: :post %>    <hr>
+<%end%>

@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   # routes for user
   # resources :users
   resources :users do
-    resources :posts
+    resources :posts do
+      member do
+        post "like"
+      end
+    end
+    
   end
   # routes for posts
   resources :posts
